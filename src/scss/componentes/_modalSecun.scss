@@ -1,0 +1,234 @@
+@use 'base/variables' as v;
+
+/* Animación de entrada */
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -60%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+/* Animación de salida */
+@keyframes slideOut {
+    from {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -60%);
+        opacity: 0;
+    }
+}
+
+/* Modal para seleccionar parte del día */
+#modal-seleccionar-turno {
+    display: none;
+    border-radius: 15px;
+    background-color: v.$blanco; /* Fondo blanco */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    z-index: 3006;
+}
+
+/* Cuando el modal está visible */
+.modal-seleccionar-turno.mostrar {
+    display: block;
+    animation: slideIn 0.5s forwards;
+}
+
+/* Contenido del modal */
+.modal-contenido-seleccionar {
+    background-color: v.$blanco;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+.modal-contenido-seleccionar p{
+    color: black;
+}
+
+/* Botones de turno */
+.botones-turno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Asegura que los botones se ajusten en pantallas más pequeñas */
+}
+
+/* Estilos base de los botones de turno */
+.button-hora {
+    color: v.$blanco;
+    padding: 12px 25px;
+    margin: 10px; /* Añadir margen para mejor separación y ajuste */
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: v.$dorado; /* Dorado para los botones */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Colores de los botones al hacer hover */
+.button-hora:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco con transparencia */
+    transform: scale(1.05);
+}
+
+/* Botón seleccionado */
+.button-hora.seleccionado {
+    background-color: #f1c40f; /* Dorado brillante cuando seleccionado */
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Diferenciación entre turno mañana y tarde */
+#turno-manana {
+    background-color:rgb(76, 175, 80) !important; /* Dorado suave para mañana */
+}
+
+#turno-tarde {
+    background-color: #e67e22 !important; /* Naranja suave para tarde */
+}
+
+/* Contenedor de horarios */
+.horarios-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centrar los botones horizontalmente */
+    align-items: center; /* Centrar los botones verticalmente */
+    margin-top: 20px;
+}
+
+/* Estilo de los botones de horarios */
+.horario {
+    background-color: #3498db;
+    color: v.$blanco;
+    padding: 12px 20px;
+    margin: 10px; /* Ajustar márgenes para separación y centrar */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.horario:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.horario:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el botón seleccionado */
+.horario.seleccionado {
+    border: 2px solid v.$dorado !important; /* Borde dorado sutil */
+}
+
+/* Estilo del contenedor principal */
+.campo-hora {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botón de cerrar */
+.btn {
+    background-color: #e74c3c;
+    color: v.$blanco;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #c0392b;
+}
+
+/* Animación para los botones de horarios */
+.botones-horarios {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.botones-horarios.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo cuando el botón cambia a confirmar */
+.confirmar-seleccion {
+    background-color: #2ecc71; /* Verde para confirmar */
+    color: v.$blanco;
+}
+
+/* Botones deshabilitados */
+button:disabled {
+    background-color: #d3d3d3;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+/* Botón ocupado */
+.ocupado {
+    background-color: #d3d3d3 !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .button-hora {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .horario {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .campo-hora {
+        padding: 10px;
+    }
+
+    #modal-seleccionar-turno {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+
+
+#modal-seleccionar-turno-editar {
+    display: none;
+    border-radius: 15px;
+    background-color: v.$blanco; /* Fondo blanco */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    z-index: 3006;
+}

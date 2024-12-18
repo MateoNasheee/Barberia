@@ -1,0 +1,303 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contenedor-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: visible;
+}
+
+.imagen {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #151515;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  min-height: 50vh; /* Altura mínima para pantallas pequeñas */
+
+  @media (min-width: 768px) {
+    min-height: 70vh; /* Altura para tabletas */
+  }
+
+  @media (min-width: 1024px) {
+    min-height: 80vh; /* Altura para escritorios */
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  .carrusel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+    flex-wrap: nowrap;
+
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 50vh; /* Altura mínima para pantallas pequeñas */
+
+      @media (min-width: 768px) {
+        min-height: 70vh; /* Altura para tabletas */
+      }
+
+      @media (min-width: 1024px) {
+        min-height: 80vh; /* Altura para escritorios */
+      }
+
+      &:nth-child(1) {
+        background-image: url(../img/1.jpg);
+      }
+
+      &:nth-child(2) {
+        background-image: url(../img/2.jpg);
+      }
+
+      &:nth-child(3) {
+        background-image: url(../img/3.jpg);
+      }
+
+      &:nth-child(4) {
+        background-image: url(../img/4.jpg);
+      }
+
+      &:nth-child(5) {
+        background-image: url(../img/5.jpg);
+      }
+
+      .texto-slide {
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 70%;
+        color: white; /* Blanco para contraste con las imágenes */
+        z-index: 2;
+
+        .titulo {
+          font-size: 3rem; /* Texto más grande */
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+          line-height: 1.2;
+          color: #b08d57; /* Dorado */
+          text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.8); /* Sombra más intensa */
+        }
+
+        .subtitulo {
+          font-size: 1.8rem; /* Texto más grande */
+          font-weight: 300;
+          margin-bottom: 1rem;
+          line-height: 1.5;
+          color: #ffffff; /* Blanco */
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra ligera */
+        }
+      }
+    }
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #b08d57; /* Dorado */
+    border: none;
+    color: #151515; /* Contraste oscuro */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    z-index: 3;
+    transition: background-color 0.3s ease;
+  }
+
+  .prev:hover,
+  .next:hover {
+    background-color: #e6c282; /* Dorado más claro */
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .indicadores {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+
+    .indicador {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ffffff; /* Blanco */
+
+      &.active {
+        background-color: #b08d57; /* Dorado */
+      }
+    }
+  }
+}
+
+
+.seccion-widget {
+  background-color: #000; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+  padding: 80px 20px; /* Aumentamos la altura */
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.columna {
+  flex: 1;
+  min-width: 250px;
+  margin: 20px;
+}
+
+.widget-footer h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #fff; /* Títulos en blanco */
+}
+
+.widget-footer p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.social-widget {
+  list-style: none;
+  padding: 0;
+}
+
+.social-widget li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.social-widget a {
+  color: #fff; /* Iconos sociales blancos */
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.social-widget a:hover {
+  color: #FFD700; /* Dorado al pasar el ratón */
+}
+
+.horarios-abiertos {
+  list-style: none;
+  padding: 0;
+}
+
+.horarios-abiertos li {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.form-suscripcion {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido */
+}
+
+.form-suscripcion input {
+  padding: 10px;
+  border: 1px solid #fff; /* Borde blanco */
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 80%; /* Cambié el ancho para no ocupar todo el espacio */
+  font-size: 14px;
+  background-color: #fff; /* Fondo gris oscuro para el input */
+  color: black; /* Texto blanco */
+}
+
+.suscripcion-contenedor {
+  display: flex;
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center;
+  width: 80%; /* Alinea los elementos en el centro */
+}
+
+.enviar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #FFD700; /* Botón dorado */
+  color: #000;
+  cursor: pointer;
+  margin-right: 10px; /* Espacio entre el botón y el texto */
+}
+
+.enviar:hover {
+  background-color: #DAA520; /* Dorado oscuro */
+}
+
+.texto-boton {
+  color: #fff; /* Texto blanco */
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .fila {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .columna {
+      margin: 10px 0;
+  }
+}
+
+.fa-2x {
+  font-size: 1.3em !important;
+}
+
+.logo-marca {
+  width: 150px; /* Ajusta el tamaño del logo */
+  height: 95px;
+  background-image: url(../img/logofondo.jpg); /* Ruta de tu logo */
+  background-size: contain; /* Asegura que la imagen se ajuste dentro del área */
+  background-position: center; /* Centra la imagen dentro del área */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  display: block; /* Asegura que funcione como un elemento de bloque */
+  flex-shrink: 0; /* Evita que se reduzca demasiado */
+  background-color: #000; /* Fondo negro detrás del logo */
+  padding: 10px; /* Espacio alrededor del logo, si lo necesitas */
+  border-radius: 5px; /* Bordes redondeados, si lo deseas */
+}

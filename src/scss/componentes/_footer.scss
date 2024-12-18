@@ -1,0 +1,49 @@
+
+
+.footer_section {
+    display: block;
+    background-color: #222227;
+    border-top: 1px solid #333;
+    padding-bottom: 1rem;
+    color: white;
+    margin-top: auto;
+}
+
+.footer_section .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer_section .text-left {
+    text-align: left;
+}
+
+.footer_section .text-center {
+    text-align: center;
+}
+
+.footer_section p {
+    font-size: 1.3rem; /* Ajusta el tamaño de la fuente a 1.3rem */
+}
+
+.footer_section .text-right {
+    text-align: right;
+}
+
+.footer_section a {
+    color: #ffffff; /* Color blanco para el enlace */
+    text-decoration: none;
+}
+
+.footer_section a:hover {
+    text-decoration: underline; /* Subraya el enlace al pasar el ratón */
+}
+
+.footer_section .fab {
+    color: #ffffff;
+}
+
+.footer_section .fab:hover {
+    color: #0077b5; /* Cambia el color del icono al pasar el ratón */
+}

@@ -1,0 +1,206 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.modal-perfil {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9); // Inicialmente un poco reducido
+    background-color: v.$blanco; // Fondo blanco
+    border-radius: 12px;
+    padding: 2rem;
+    z-index: 60;
+    width: 500px;
+    max-width: 650px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0; // Oculto por defecto
+
+    transition: opacity 0.4s ease, transform 0.4s ease; // Transiciones de suavizado
+
+    &.show {
+        display: flex;
+        opacity: 1; // Aparece con transición
+        transform: translate(-50%, -50%) scale(1); // Escala normal
+    }
+
+    .cerrar-modal {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        font-size: 2.5rem;
+        color: v.$dorado; // Color dorado
+        cursor: pointer;
+
+        &:hover {
+            color: darken(v.$dorado, 10%); // Oscurecer en el hover
+        }
+    }
+
+    h2 {
+        margin-bottom: 2rem;
+        color: v.$dorado; // Color dorado
+        text-align: center;
+        font-size: 2.5rem; /* Texto más grande */
+    }
+
+    .seccion-datos, .seccion-contrasena {
+        margin-bottom: 2.5rem;
+        color: v.$dorado; // Color dorado
+
+        h3 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem; /* Subtítulo más grande */
+        }
+
+        .campo-perfil {
+            display: flex;
+            flex-direction: column;
+            background-color: v.$blanco; // Fondo blanco
+            border: 1px solid v.$dorado; // Borde dorado
+            border-radius: 8px;
+            padding: 1.5rem; /* Más padding */
+            margin-bottom: 1.8rem; /* Más separación entre campos */
+
+            label {
+                margin-bottom: 0.7rem;
+                font-size: 1.6rem; /* Texto de etiquetas más grande */
+                color: v.$dorado; // Color dorado
+            }
+
+            input {
+                padding: 1rem; /* Más espacio en los inputs */
+                background-color: v.$blanco; // Fondo blanco
+                border: 1px solid v.$dorado; // Borde dorado
+                color: v.$dorado; // Texto dorado
+                border-radius: 8px;
+                font-size: 1.5rem; /* Texto del input más grande */
+                transition: border-color 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: darken(v.$dorado, 10%);
+                    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5); // Sombra dorada
+                }
+            }
+
+            .correo-deshabilitado {
+                background-color: lighten(v.$dorado, 40%); // Fondo dorado claro
+                color: darken(v.$dorado, 20%); // Texto dorado oscuro
+            }
+        }
+    }
+
+    .seccion-contrasena {
+        text-align: center;
+        p {
+            margin-bottom: 2.5rem;
+            font-size: 1.4rem; /* Texto del párrafo más grande */
+            color: v.$dorado; // Color dorado
+        }
+
+        .boton-restablecer {
+            #btn-restablecer {
+                background-color: v.$dorado; /* Color de fondo dorado */
+                color: v.$blanco; /* Color del texto blanco */
+                padding: 10px 20px; /* Espaciado interno */
+                border: none; /* Sin borde */
+                border-radius: 50px;
+                cursor: pointer; /* Cambia el cursor a pointer */
+                transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+
+                &:hover {
+                    background-color: darken(v.$dorado, 10%); // Oscurecer en el hover
+                    transform: translateY(-3px);
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 100%; // Ancho completo para pantallas móviles
+        height: 100%; // Alto completo para pantallas móviles
+        top: 0;
+        left: 0;
+        transform: none; // Sin transformación
+        border-radius: 0; // Sin bordes redondeados
+        padding: 1rem; // Menos padding
+
+        &.show {
+            transform: none; // Sin transformación en móviles
+        }
+
+        .cerrar-modal {
+            top: 10px;
+            right: 10px;
+        }
+    }
+}
+
+.modal-contenido-perfil {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%; // Ancho completo
+
+    @media (max-width: 768px) {
+        height: 100%; // Alto completo
+        padding: 1rem; // Menos padding
+    }
+}
+
+.boton-restablecer {
+    margin-top: 2rem;
+}
+
+#blur-background2 {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Fondo oscuro */
+    z-index: 60; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.input-modificado {
+    border: 2px solid v.$dorado !important; // Borde dorado para inputs modificados
+}
+
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.mensaje-error {
+    color: v.$dorado;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.input-error {
+    border: 3px solid rgba(255, 0, 0, 0.6) !important; // Borde rojo para inputs con error
+}
+
+#boton-actualizar {
+    background-color: v.$dorado; /* Color de fondo dorado */
+    color: v.$blanco; /* Color del texto blanco */
+    padding: 1.5rem 4rem; /* Espaciado interno */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    
+    &:hover {
+        background-color: darken(v.$dorado, 10%) !important;  /* Oscurecer solo un 10% */
+    }
+}
+
+#boton-actualizar.disabled {
+    background-color: #918f8f; /* Tono gris para el botón deshabilitado */
+    color: #161616; /* Color del texto cuando está deshabilitado */
+    cursor: not-allowed; /* Cambia el cursor a not-allowed */
+}

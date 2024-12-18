@@ -1,0 +1,75 @@
+
+
+/* Modal de anulación */
+
+
+.modal-anular {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #333; /* Fondo oscuro */
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    opacity: 0;
+    width: 600px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 2800;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7); /* Sombra suave para dar profundidad */
+}
+
+/* Modal visible */
+.modal-anular.show {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+// /* Título del modal */
+// .modal-content h2 {
+//     color: white ; /* Título en dorado para un toque llamativo */
+//     font-size: 24px;
+//     font-weight: bold;
+//     margin-bottom: 20px;
+// }
+
+/* Contenido de la modal */
+.modal-body p {
+    font-size: 18px;
+    color: #f5f5f5; /* Texto claro */
+    margin-bottom: 20px;
+}
+
+/* Botones dentro del modal */
+.modal-buttons-anular .btn {
+    background-color: #e74c3c; /* Azul oscuro con matices de gris, un tono elegante */
+    color: #fff;
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Efecto hover para botones */
+.modal-buttons-anular .btn:hover {
+    background-color: #e74c3c; /* Un tono más claro de azul oscuro */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Efecto al hacer clic (botón activo) */
+.modal-buttons-anular .btn:active {
+    background-color: #e74c3c; /* Color verde aqua que resalta al presionar */
+    transform: translateY(0); /* Reajustamos el efecto de elevación */
+}
+
+
+
+
+
+
+

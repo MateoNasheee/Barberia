@@ -1,0 +1,105 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin telefono {
+    @media (min-width: v.$telefono) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin boton($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 1.5rem 4rem;
+    color: $colorTexto;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 5rem 0;
+
+    @include tablet {
+        width: auto;
+        // Reducir el tamaño del padding en tablets
+        width: auto; // Cambiar el ancho a automático en tablets
+        margin: 3rem auto; // Centrar el botón horizontalmente en tablets
+    }
+    &:hover {
+        background-color: darken($bgColor, 10%);
+        cursor: pointer;
+    }
+    &:disabled {
+        background-color: #cccccc;  // Un gris tenue
+        color: #666666;  // Cambia el color del texto
+        cursor: not-allowed;  // Cambia el cursor para mostrar que no es clickeable
+        opacity: 0.7;  // Reduce la opacidad para dar un efecto deshabilitado
+        pointer-events: none;  // Evita que los eventos de hover funcionen en el botón deshabilitado
+    }
+}
+
+@mixin boton-admin($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 1.5rem 4rem;
+    color: $colorTexto;
+  
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+    display: block;
+    width: 100%;
+    
+
+    @include tablet {
+        width: auto;
+        // Reducir el tamaño del padding en tablets
+        width: auto; // Cambiar el ancho a automático en tablets
+        margin: 3rem auto; // Centrar el botón horizontalmente en tablets
+    }
+    &:hover {
+        background-color: darken($bgColor, 10%);
+        cursor: pointer;
+    }
+    &:disabled {
+        background-color: #cccccc;  // Un gris tenue
+        color: #666666;  // Cambia el color del texto
+        cursor: not-allowed;  // Cambia el cursor para mostrar que no es clickeable
+        opacity: 0.7;  // Reduce la opacidad para dar un efecto deshabilitado
+        pointer-events: none;  // Evita que los eventos de hover funcionen en el botón deshabilitado
+    }
+}
+
+@mixin grid($columnas, $espaciado) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+/** Botones con estilos blanco y dorado **/
+.boton-blanco-dorado {
+    @include boton(v.$blanco, v.$dorado);
+}
+
+.boton-admin-blanco-dorado {
+    @include boton-admin(v.$blanco, v.$dorado);
+}

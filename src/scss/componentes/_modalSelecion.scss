@@ -1,0 +1,119 @@
+.modal-seleccion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #fff; /* Fondo blanco */
+    border: 2px solid #d4af37; /* Borde dorado */
+    border-radius: 12px;
+    padding: 2.5rem;
+    z-index: 2000;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh; /* Máximo alto del modal */
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out, transform 0.6s ease-in-out; /* Transiciones */
+
+    &.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+    }
+
+    &.hide {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+        pointer-events: none;
+    }
+}
+
+.modal-seleccion-content {
+    background-color: #fff; /* Fondo blanco */
+    color: black; /* Texto dorado */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.modal-content-seleccion h2 {
+    color: black; /* Título dorado */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.modal-seleccion-buttons {
+    display: flex;
+    flex-direction: row; /* Botones en fila */
+    justify-content: space-between; /* Espacio entre botones */
+    gap: 15px;
+}
+
+/* Estilos de botones */
+.btn-opcion {
+    padding: 12px;
+    font-size: 1.1em;
+    color: #fff; /* Texto blanco */
+    background: #d4af37; /* Fondo dorado */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 48%; /* Ancho de los botones */
+}
+
+.btn-opcion:hover {
+    background: #b8860b; /* Fondo dorado oscuro al pasar el ratón */
+}
+
+.btn-cancelar {
+    padding: 10px;
+    font-size: 1.1em;
+    color: #fff; /* Texto blanco */
+    background: #ff5c5c; /* Fondo rojo */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn-cancelar:hover {
+    background: #ff7878; /* Fondo rojo más claro al pasar el ratón */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .modal-seleccion {
+        
+        transform: translate(-50%, 0) scale(1); /* Ajustar la escala */
+        max-height: 90vh; /* Mayor altura en formato de celular */
+        padding: 1.5rem; /* Reducir el padding */
+    }
+
+    .modal-seleccion-buttons {
+        flex-direction: column; /* Botones en columna en pantallas pequeñas */
+    }
+
+    .btn-opcion {
+        width: 100%; /* Botones ocupan el 100% del ancho */
+        margin-bottom: 10px; /* Margen entre botones */
+    }
+}
+
+/* Calendario */
+#calendar2 {
+    max-width: 60%; /* Ajusta el ancho total del calendario */
+    height: 450px !important;
+    margin: 0 auto; /* Centrar el calendario */
+    background-color: white; /* Fondo blanco para un look limpio */
+    border-radius: 10px; /* Bordes redondeados para suavizar el calendario */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para dar profundidad */
+    
+    @media (max-width: 768px) {
+        max-width: 100%; /* Ancho completo en móviles */
+        height: auto; /* Altura automática en móviles */
+        padding: 1rem; /* Espaciado interno en móviles */
+    }
+}

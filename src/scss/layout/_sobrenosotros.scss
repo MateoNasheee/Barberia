@@ -1,0 +1,191 @@
+@use 'base/variables' as v;
+
+.modal-sesion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #fcf9f5; /* Fondo dorado claro */
+    border-radius: 12px;
+    padding: 1.5rem;
+    z-index: 2000;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.modal-sesion.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.modal-contenido-sesion {
+    background-color: #fcf9f5; /* Fondo blanco */
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+   
+    color: #fcf9f5; /* Texto dorado */
+    text-align: center;
+    animation: fadeInScale 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-titulo {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #d4af37; /* Título dorado */
+    margin-bottom: 1rem;
+}
+
+.modal-contenido-sesion p {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    color: #b8860b; /* Texto dorado más oscuro */
+    margin-bottom: 4rem;
+}
+
+.boton-iniciar-sesion {
+    color: #d4af37 !important; /* Texto dorado */
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: .5em 1.2em;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #d4af37;
+    transition: all .3s ease;
+    position: relative;
+
+    &:hover {
+        background: #d4af37; 
+        color: #fff !important;
+        transform: scale(1.05);
+    }
+}
+
+.cerrar-modal-session {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #d4af37;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.cerrar-modal-session:hover {
+    color: #ffd700; /* Dorado brillante */
+    transform: rotate(90deg);
+}
+
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.loading-spinner.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.razor {
+    width: 100px;
+    height: 100px;
+    border: 10px solid transparent;
+    border-top: 10px solid #d4af37; /* Borde dorado */
+    border-bottom: 10px solid #d4af37;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative;
+}
+
+.razor:before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    background-color: #fff; /* Centro blanco */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+#pantalla-carga, #mensaje-exito {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); // Fondo translúcido
+    color: v.$blanco; // Texto blanco
+    font-size: 1.5rem;
+    z-index: 1000;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Light white border */
+    border-top: 4px solid v.$dorado; /* Golden border on top */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#pantalla-carga p, #mensaje-exito p {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.7); // Fondo translúcido
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

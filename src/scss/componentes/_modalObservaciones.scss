@@ -1,0 +1,92 @@
+/* Modal de Observaciones */
+.modal-observacion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 12px;
+    padding: 2.5rem;
+    z-index: 3500;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5); /* Sombra dorada */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.modal-observacion.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.modal-observacion.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none;
+}
+
+.modal-content-observacion {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #d4af37; /* Borde dorado */
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.8rem;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+    border: 1px solid #d4af37; /* Borde dorado */
+}
+
+textarea:focus {
+    outline: none;
+    border: 1px solid #d4af37; /* Borde dorado al enfocar */
+}
+
+.btn-enviar {
+    padding: 10px;
+    font-size: 1.1em;
+    color: #ffffff; /* Texto blanco */
+    background: #d4af37; /* Fondo dorado */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn-enviar:hover {
+    background: #b8860b; /* Fondo dorado más oscuro al pasar el ratón */
+}
+
+.btn-enviar:disabled {
+    background: #d4af37; /* Fondo dorado opaco */
+    cursor: not-allowed;
+}
+
+/* Responsivo */
+@media screen and (max-width: 768px) {
+    .modal-observacion {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        padding: 1.5rem; /* Reducir padding en pantallas pequeñas */
+    }
+
+    textarea {
+        font-size: 1.6rem; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+    }
+
+    .btn-enviar {
+        font-size: 1rem; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+        padding: 8px; /* Reducir padding en pantallas pequeñas */
+    }
+}

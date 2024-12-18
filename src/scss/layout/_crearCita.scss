@@ -1,0 +1,170 @@
+/* Estilos base del formulario */
+@use 'base/variables' as v;
+
+.formulario-crear {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: 40px auto;
+    color: #000; /* Texto negro */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilo de los campos */
+.campo-crear {
+    margin-bottom: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Estilo de las etiquetas */
+.campo-crear label {
+    font-size: 1.6rem;
+    color: #000; /* Texto negro */
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Estilos para inputs y select */
+.campo-crear input,
+.campo-crear select {
+    width: 100%;
+    padding: 15px 18px;
+    background-color: #f9f9f9; /* Fondo gris claro */
+    border: 1px solid #000; /* Borde negro */
+    color: #000; /* Texto negro */
+    border-radius: 8px;
+    font-size: 1.6rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Estilo al enfocar los campos (input, select) */
+.campo-crear input:focus,
+.campo-crear select:focus {
+    background-color: #fff; /* Fondo blanco */
+    border-color: #000; /* Borde negro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra negra ligera */
+}
+
+/* Estilo del botón */
+.btn-ver-fechas {
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover y efecto de clic */
+.btn-ver-fechas:hover {
+    background-color: #333; /* Negro más claro */
+}
+.btn-ver-fechas:active {
+    transform: scale(0.98);
+}
+
+/* Flexbox para alinear los elementos en una fila */
+.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.campo-flex {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Responsivo */
+@media screen and (max-width: 768px) {
+    .formulario-crear {
+        padding: 20px;
+    }
+
+    .campo-crear label {
+        font-size: 1.4rem;
+    }
+
+    .campo-crear input,
+    .campo-crear select,
+    .btn-ver-fechas {
+        font-size: 1.4rem;
+        padding: 10px 15px;
+    }
+
+    .flex-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .campo-flex {
+        margin-right: 0;
+    }
+}
+
+
+.custom-combobox {
+    position: relative;
+    width: 100%;
+    font-size: 1.6rem;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #000;
+}
+
+.combobox-selected {
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+}
+
+.combobox-selected::after {
+    content: '▼';
+    float: right;
+    color: #000;
+    font-size: 1rem;
+}
+
+.combobox-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}.checkbox-option {
+    display: flex;
+    justify-content: space-between; /* Alinea el contenido a los extremos */
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.checkbox-option:hover {
+    background-color: #f0f0f0;
+}
+
+.checkbox-option input {
+    margin: 0; /* Elimina cualquier margen por defecto */
+    margin-left: auto; /* Empuja el input hacia la derecha */
+}
+
+
+.combobox-options.active {
+    display: block;
+}

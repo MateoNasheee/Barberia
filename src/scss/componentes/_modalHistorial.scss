@@ -1,0 +1,276 @@
+@use 'base/variables' as v;
+
+.modalHistorial {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    background-color: v.$blanco;
+    color: v.$dorado;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+
+    &.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+    }
+    &.hide {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+        pointer-events: none;
+    }
+}
+
+.modal-contenido-historial {
+    position: relative;
+    max-height: 80vh;
+}
+
+#historial-content {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 1rem 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: v.$blanco;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: v.$dorado;
+        border-radius: 10px;
+        border: 2px solid v.$blanco;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: darken(v.$dorado, 10%);
+    }
+
+    &::-webkit-scrollbar-thumb:active {
+        background-color: lighten(v.$dorado, 10%);
+    }
+}
+
+.grupo-cita {
+    margin-bottom: 1rem;
+    padding: 10px;
+    border: 1px solid v.$dorado;
+    border-radius: 8px;
+    background-color: v.$blanco;
+}
+
+.info-fecha-hora {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fecha-hora {
+    display: flex;
+    flex-direction: column;
+}
+
+.icono-basura {
+    font-size: 1.5rem; /* Reduce icon size */
+    color: lighten(v.$dorado, 30%);
+    cursor: pointer;
+    margin-left: 10px; /* Smaller spacing */
+    transition: color 0.3s ease;
+}
+
+.icono-lapiz {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    color: v.$dorado;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icono-agregar {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    color: lighten(v.$dorado, 20%);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icono-agregar:hover {
+    color: darken(v.$dorado, 10%);
+}
+
+.icono-basura:hover {
+    color: darken(v.$dorado, 20%);
+}
+
+.icono-lapiz:hover {
+    color: lighten(v.$dorado, 20%);
+}
+
+.info-fecha-hora .item {
+    color: v.$dorado;
+    font-size: 0.9em;
+}
+
+.cita {
+    position: relative;
+    background-color: v.$blanco;
+    color: v.$dorado;
+    border-radius: 8px;
+    padding: 10px; /* Reduced padding */
+    margin: 8px 0; /* Reduced margin */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 5px 4px rgba(212, 175, 55, 0.8);
+    }
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 1.5rem; /* Reduced size */
+    color: v.$dorado;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.cerrar-modal:hover {
+    color: darken(v.$dorado, 10%);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+strong {
+    font-size: 1.1em;
+    color: v.$dorado;
+}
+
+.etiqueta {
+    font-size: 1em;
+    color: v.$dorado;
+}
+
+.item {
+    color: v.$dorado;
+    font-size: 1.1em;
+}
+
+.precio {
+    font-size: 1.2em;
+    color: v.$dorado;
+    text-align: right;
+}
+
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.loading-spinner.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.razor {
+    width: 80px; /* Reduced size */
+    height: 80px;
+    border: 10px solid transparent;
+    border-top: 10px solid v.$dorado;
+    border-bottom: 10px solid v.$dorado;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.razor:before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    background-color: v.$dorado;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .modalHistorial {
+        width: 90%;
+        height: auto;
+        padding: 1rem;
+       
+        transform: translate(0, 0);
+        border-radius: 4px; /* Slightly smaller radius */
+        max-height: none;
+    }
+
+    .cita {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px; /* Smaller padding */
+    }
+
+    .info {
+        margin-bottom: 0.5rem; /* Reduced margin */
+    }
+
+    .precio {
+        font-size: 1.1em;
+        text-align: left;
+    }
+
+    .icono-basura,
+    .icono-lapiz,
+    .icono-agregar {
+        font-size: 1.5rem; /* Smaller icon size */
+        margin-left: 8px; /* Smaller margin */
+    }
+
+    .modal-contenido-historial {
+        max-height: 70vh; /* Adjusted height for smaller screens */
+    }
+
+    #historial-content {
+        max-height: 60vh; /* Reduced height for content */
+    }
+}

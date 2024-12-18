@@ -1,0 +1,20 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.boton {
+    @include m.boton(v.$dorado, v.$blanco);
+}
+.boton-eliminar {
+    @include m.boton-admin(v.$rojo, v.$blanco);
+}
+
+.boton-posponer {
+    @include m.boton-admin(v.$amarillo, v.$blanco);
+}
+
+.boton-realizado {
+    @include m.boton-admin(v.$verde, v.$blanco);
+}
+.boton-anulado{
+    @include m.boton(v.$rojo, v.$blanco);
+}

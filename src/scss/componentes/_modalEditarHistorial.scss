@@ -1,0 +1,129 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.modal-editar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 12px;
+    padding: 2.5rem;
+    z-index: 2000;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh; /* Máximo alto del modal */
+    overflow-y: auto; /* Añadir scroll vertical */
+    box-shadow: 0 15px 30px rgba(210, 169, 44, 0.5); /* Sombra dorada */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.modal-editar.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.modal-editar.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none;
+}
+
+.modal-content {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #b08d57; /* Texto dorado */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.modal-content h2 {
+    margin-bottom: 4rem !important;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.btn.editar {
+    background-color: #b08d57; /* Fondo dorado */
+    color: #ffffff; /* Texto blanco */
+    flex: 1;
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.btn.anular {
+    background-color: #d4af37; /* Fondo dorado más brillante */
+    color: #ffffff; /* Texto blanco */
+    flex: 1;
+    margin-left: 10px;
+    font-size: 1.8rem;
+}
+
+.btn.cancelar {
+    background-color: #888888; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+#blur-background3 {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Fondo oscuro */
+    z-index: 1001; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.editar-content {
+    margin-top: 1rem;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .modal-editar {
+        width: 80%; /* Ancho ajustado para pantallas pequeñas */
+        padding: 1.5rem; /* Reducir el padding */
+       
+        transform: translateX(-50%) scale(1); /* Ajustar la escala */
+        max-width: 100%; /* El modal ocupa el 100% del ancho */
+    }
+
+
+
+    .btn {
+        width: 100%; /* Botones ocupan el 100% del ancho */
+        margin: 5px 0; /* Espaciado entre botones */
+    }
+
+    .btn.editar, .btn.anular {
+        font-size: 1.2rem; /* Reducir el tamaño de fuente de los botones */
+    }
+}

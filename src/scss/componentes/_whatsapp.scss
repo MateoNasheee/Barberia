@@ -1,0 +1,34 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.whatsapp-icon {
+    position: fixed;
+    width: 54px;
+    height: 54px; /* Ajustamos la altura a 54px */
+    line-height: 54px; /* Alineamos el icono verticalmente */
+    bottom: 25px;
+    right: 32px;
+    background: #bfa58a; /* Color dorado */
+    color: #fff; /* Color blanco para el icono */
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, .3);
+    z-index: 59;
+    transition: all 300ms ease;
+    display: flex; /* Usamos flex para centrar el contenido */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+
+    &:hover {
+        background: #DAA520; /* Color dorado oscuro al hacer hover */
+    }
+
+    /* Para dispositivos móviles */
+    @media only screen and (max-width: 768px) {
+        width: 40px; /* Reducimos el tamaño en pantallas pequeñas */
+        height: 40px;
+        line-height: 40px;
+        font-size: 25px; /* Reducimos el tamaño del icono */
+    }
+}

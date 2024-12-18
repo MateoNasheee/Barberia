@@ -1,0 +1,156 @@
+@use 'base/variables' as v;
+
+.modal-seleccion-servicio {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #fff; /* Color de fondo blanco */
+    border: 2px solid #d4af37; /* Borde dorado */
+    border-radius: 12px;
+   
+    z-index: 2000;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh; /* Máximo alto del modal */
+    overflow-y: auto; /* Añadir scroll vertical */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra ajustada */
+    opacity: 0;
+    pointer-events: none; /* Evita que se interactúe con el modal cuando está oculto */
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Transiciones */
+}
+
+.modal-seleccion-servicio.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto; /* Permitir la interacción */
+}
+
+.modal-seleccion-servicio.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none; /* Evitar la interacción */
+}
+
+.modal-content-seleccion-servicio {
+    color: #000; /* Color del texto negro */
+    padding: 2rem;
+}
+
+.btn-confirmar {
+    padding: 10px;
+    font-size: 1.1em;
+    color: #fff;
+    background: #d4af37; /* Fondo dorado */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: background .3s;
+}
+
+.btn-confirmar:hover {
+    background: #b8860b; /* Fondo dorado oscuro al pasar el ratón */
+}
+
+.btn-confirmar:disabled {
+    background-color: #ccc; /* Color de fondo cuando está deshabilitado */
+    cursor: not-allowed; /* Cambiar el cursor */
+}
+
+/* Estilos para el spinner de carga */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.loading-spinner.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.razor {
+    width: 100px;
+    height: 100px;
+    border: 10px solid transparent;
+    border-top: 10px solid #d4af37; /* Bordes dorados para el spinner */
+    border-bottom: 10px solid #d4af37;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative;
+}
+
+.razor:before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    background-color: #d4af37;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .modal-seleccion-servicio {
+        width: 90%; /* Ajustar el ancho del modal */
+        
+        
+        transform: translateX(-50%) scale(1); /* Ajustar la escala */
+        max-width: 100%; /* El modal ocupa el 100% del ancho */
+    }
+
+    .btn-confirmar {
+        font-size: 1em; /* Reducir el tamaño de fuente del botón */
+        padding: 12px; /* Aumentar el padding para una mejor interacción táctil */
+    }
+
+    .razor {
+        width: 80px;
+        height: 80px; /* Reducir el tamaño del spinner */
+    }
+
+    .razor:before {
+        width: 50%;
+        height: 50%; /* Reducir el tamaño del spinner interno */
+    }
+}
+
+.sticky {
+    position: -webkit-sticky; /* Para compatibilidad con Safari */
+    position: sticky;
+    bottom: 0; /* Se pega al fondo del contenedor */
+    background-color: #fff; /* Color de fondo blanco */
+    padding: 10px 0; /* Espaciado alrededor del contenido */
+    border-top: 1px solid #d4af37; /* Borde superior dorado */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    z-index: 2001; /* Asegúrate de que esté por encima del contenido del modal */
+    display: flex; /* Usar flexbox para alinear los botones en fila */
+    justify-content: space-between; /* Distribuir espacio entre los botones */
+}
+
+/* Opcional: para ajustar los estilos de los botones dentro del div sticky */
+.sticky .btn-cancelar, .sticky .btn-confirmar {
+    width: 48%; /* Los botones ocupan el 48% del ancho cada uno */
+    margin: 1%; /* Margen entre los botones */
+}
+

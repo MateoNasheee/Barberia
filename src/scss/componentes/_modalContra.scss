@@ -1,0 +1,131 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+/* Estilos del modal */
+.modal-oculto-contra {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-activo {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-contenido-contra {
+    background-color: v.$blanco; // Fondo blanco
+    color: v.$dorado; // Texto dorado
+    padding: 5rem; // Mayor espaciado
+    width: 45%; // Ancho aumentado
+    height: auto; // Ajuste de altura
+    max-width: 100%;
+    border-radius: 20px; // Bordes redondeados
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    transform: translateY(-20px);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    animation: slideInContra 0.4s forwards;
+
+    @media (max-width: 768px) {
+        width: 90%; // Ancho del 90% para pantallas móviles
+        padding: 2rem; // Menos padding en móviles
+        border-radius: 10px; // Menos bordes redondeados en móviles
+        transform: translateY(0); // Ajuste de transformación en móviles
+    }
+}
+
+.titulo-modal {
+    font-size: 2.5rem; // Título más grande
+    margin-bottom: 2rem;
+    color: v.$dorado; // Título dorado
+}
+
+.campo-modal {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.campo-modal label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+    font-size: 1.3rem;
+    color: v.$dorado; // Color dorado
+}
+
+.campo-modal input {
+    width: 100%;
+    padding: 1.2rem; // Inputs un poco más grandes
+    border: 1px solid v.$dorado; // Borde dorado
+    border-radius: 12px;
+    background-color: v.$blanco; // Fondo blanco
+    color: #030303;
+    font-size: 1.5rem;
+}
+
+.campo-modal input:focus {
+    outline: 2px solid v.$dorado; // Borde dorado al enfocar
+}
+
+.boton-cerrar {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    color: v.$dorado; // Color dorado
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.boton-cerrar:hover {
+    color: darken(v.$dorado, 10%); // Oscurecer en el hover
+}
+
+.boton-modal {
+    background-color: v.$dorado; // Fondo dorado
+    color: v.$blanco; // Texto blanco
+    padding: 1.7rem 4.5rem; // Espaciado interno aumentado
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: lighten(v.$dorado, 10%); // Aclarar en el hover
+    }
+}
+
+@keyframes slideInContra {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+input:disabled {
+    background-color: hsl(36.404494382, 36.032388664%, 91.568627451%);
+    color: hsl(36.404494382, 36.032388664%, 31.568627451%);
+    cursor: not-allowed;
+}
+
+.boton-modal.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

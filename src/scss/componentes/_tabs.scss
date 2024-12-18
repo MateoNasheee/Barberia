@@ -1,0 +1,214 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    background-color: v.$blanco; /* Fondo blanco */
+    padding: 10px 20px; /* Espaciado alrededor de las pestañas */
+    position: sticky; /* Fija la barra en la parte superior */
+    top: 0; /* Parte superior del contenedor */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    z-index: 1000; /* Asegúrate de que esté por encima del contenido */
+    border-bottom: 3px solid v.$dorado; /* Borde inferior dorado para resaltar la barra */
+    
+    @include m.tablet {
+        display: flex; /* Asegúrate de que sea flexible en tablet */
+    }
+    
+    @media (max-width: 768px) {
+        flex-direction: column; /* Cambia a una columna en móviles */
+        align-items: center; /* Centra los botones en dispositivos móviles */
+    }
+}
+
+/* Estilo para pestañas inactivas (no seleccionables) */
+.tabs button.inactivo {
+    color: rgba(0, 0, 0, 0.5); /* Color atenuado */
+    cursor: default; /* Mantiene el cursor como default */
+    pointer-events: none; /* Deshabilita eventos de mouse */
+}
+
+.tabs button {
+    flex: 1; /* Cada botón toma el mismo ancho */
+    background: none; /* Sin fondo */
+    color: v.$dorado; /* Color del texto dorado */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    cursor: pointer; /* Mano al pasar el mouse */
+    text-transform: uppercase; 
+    font-weight: bold; /* Resaltar el texto */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para fondo y color */
+    border-bottom: 3px solid transparent; /* Borde inferior transparente por defecto */
+    
+    &:hover {
+        background-color: lighten(v.$dorado, 10%); /* Fondo dorado claro al pasar el mouse */
+        color: v.$blanco; /* Texto en blanco al pasar el mouse */
+        border-bottom: 3px solid v.$dorado; /* Borde inferior dorado al pasar el mouse */
+    }
+
+    &.actual {
+        background-color: v.$dorado; /* Fondo dorado para el botón activo */
+        color: v.$blanco; /* Color del texto activo */
+        font-weight: bold; /* Resaltar el botón activo */
+        border-bottom: 3px solid v.$dorado; /* Borde inferior dorado para el botón activo */
+    }
+
+    @media (max-width: 768px) {
+        width: 100%; /* Asegurar que los botones ocupen todo el ancho en móviles */
+        margin-bottom: 5px; /* Espacio entre los botones en móviles */
+    }
+}
+
+
+
+/* Calendario */
+#calendar {
+    max-width: 60%; /* Ajusta el ancho total del calendario */
+    height: 450px !important;
+    margin: 0 auto; /* Centrar el calendario */
+    background-color: v.$blanco; /* Fondo blanco para un look limpio */
+    border-radius: 10px; /* Bordes redondeados para suavizar el calendario */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para dar profundidad */
+    
+    @media (max-width: 768px) {
+        max-width: 100%; /* Ancho completo en móviles */
+        height: auto; /* Altura automática en móviles */
+        padding: 1rem; /* Espaciado interno en móviles */
+    }
+}
+
+.fc-daygrid-day {
+    background-color: v.$blanco; /* Fondo blanco en las celdas */
+    border: 1px solid #ddd; /* Bordes suaves */
+    color: #333; /* Texto oscuro para mejor legibilidad */
+}
+
+.fc-day-today {
+    background-color: v.$dorado; /* Fondo dorado para el día actual */
+    color: v.$blanco; /* Texto blanco */
+    border: solid 2px v.$dorado; /* Borde dorado para resaltar el día actual */
+}
+
+.fc-button:hover {
+    background-color: lighten(v.$dorado, 15%); /* Fondo dorado claro al pasar el mouse */
+}
+
+.fc-toolbar-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.5rem;
+    color: v.$dorado; /* Título dorado */
+}
+
+/* Días seleccionados */
+.fc-daygrid-day.selected {
+    background-color: rgba(255, 223, 0, 0.3); /* Fondo dorado sutil y translúcido */
+    color: v.$blanco; /* Texto blanco */
+    font-weight: bold; /* Negrita para el día seleccionado */
+    border: 1.5px solid v.$dorado; /* Borde dorado para resaltar el día seleccionado */
+}
+
+/* Estilo para los días deshabilitados (días pasados) */
+.fc-daygrid-day.disabled-day {
+    cursor: not-allowed;
+    background-color: #f1f1f1; /* Fondo gris claro */
+    color: #aaa; /* Texto gris claro */
+    text-decoration: line-through !important;
+}
+
+.fc-prev-button, .fc-next-button {
+    background-color: v.$dorado; /* Fondo dorado para los botones prev/next */
+    color: v.$blanco; /* Texto blanco */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fc-prev-button:hover, .fc-next-button:hover {
+    background-color: lighten(v.$dorado, 10%);
+}
+
+/* Formato de fecha */
+input[type="date"] {
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    padding: 10px;
+    width: 100%;
+    max-width: 200px;
+    margin: 10px auto;
+
+    @media (max-width: 768px) {
+        padding: 15px; /* Más espacio en móviles */
+        max-width: 100%; /* Ancho completo en móviles */
+    }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+input[type="date"]::-ms-clear {
+    display: none;
+}
+
+input[type="date"]::-ms-expand {
+    display: none;
+}
+/* Estilo para los botones de cambio de mes en el calendario */
+.fc .fc-button {
+    background-color: v.$blanco !important; /* Fondo blanco */
+    border: 1px solid v.$dorado !important; /* Borde dorado */
+    border-radius: 0.25em !important; /* Bordes redondeados */
+    display: inline-block !important;
+    font-size: 1em !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    padding: 0.4em 0.65em !important;
+    text-align: center !important;
+    user-select: none !important;
+    vertical-align: middle !important;
+    color: v.$dorado !important; /* Color del texto dorado */
+    transition: background-color 0.3s, color 0.3s !important; /* Transición suave */
+}
+
+/* Estilo para cuando el botón está en hover */
+.fc .fc-button:hover {
+    background-color: lighten(v.$dorado, 10%) !important; /* Fondo dorado claro al pasar el mouse */
+    color: v.$blanco !important; /* Texto blanco al pasar el mouse */
+    border-color: v.$dorado !important; /* Mantener el borde dorado */
+}
+
+/* Estilo para cuando el botón está activo (presionado) */
+.fc .fc-button:active {
+    background-color: v.$dorado !important; /* Fondo dorado al presionar */
+    color: v.$blanco !important; /* Texto blanco */
+    border-color: v.$dorado !important; /* Borde dorado */
+}
+
+/* Botones seleccionados */
+.boton.seleccionado {
+    background-color: v.$dorado; /* Fondo dorado */
+    color: v.$blanco; /* Texto blanco */
+    border: 2px solid v.$dorado; /* Borde dorado */
+}
+
+/* Campo hora */
+.campo-hora {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px; /* Espacio entre los botones */
+    flex-wrap: wrap;
+}
+
+#horarios {
+    display: none;
+}
+
+#horarios.fade-in {
+    opacity: 1; /* Hacer visible */
+}

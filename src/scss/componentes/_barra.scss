@@ -1,0 +1,196 @@
+.barra {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between; /* Espacio entre el logo y los íconos */
+    align-items: center;
+    color: #b08d57;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-barberia {
+    width: 150px;
+    height: 95px;
+    background-image: url(../img/logo.jpg);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    display: block;
+    flex-shrink: 0;
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.menu-hamburguesa {
+    position: relative;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.fa-bars, .fa-times {
+    font-size: 2.5rem;
+    color: #b08d57;
+    transition: transform 0.3s ease;
+}
+
+.menu-desplegable {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #b08d57;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    min-width: 220px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+    padding: 0;
+}
+
+.menu-desplegable.mostrar {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 10px 0;
+}
+
+.menu-item {
+    padding: 18px 18px;
+    color: #b08d57;
+    text-decoration: none;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item.activo {
+    border-bottom: 2px solid #b08d57;
+}
+
+.menu-item:hover {
+    background-color: #f7f7f7;
+    color: #d4af37;
+}
+
+.menu-item i {
+    margin-left: 1rem;
+    font-size: 1.4rem;
+}
+
+.enlaces-fuera {
+    display: none;
+}
+
+@media screen and (min-width: 769px) {
+    .menu-hamburguesa {
+        display: none;
+    }
+
+    .enlaces-fuera {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .enlaces-fuera .menu-item {
+        padding: 18px 18px;
+        color: #b08d57;
+        transition: background-color 0.3s ease;
+    }
+
+    .enlaces-fuera .menu-item:hover {
+        background-color: #f7f7f7;
+        color: #d4af37;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .menu-hamburguesa {
+        display: block;
+    }
+
+    .enlaces-fuera {
+        display: none;
+    }
+
+    .logo-barberia {
+        width: 100px;
+    }
+}
+
+.menu-usuario {
+    position: relative;
+    cursor: pointer;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.menu-usuario-icono {
+    font-size: 2.5rem;
+    color: #b08d57;
+    transition: color 0.3s ease;
+}
+
+.menu-usuario-icono:hover {
+    color: #d4af37;
+}
+
+.menu-usuario-desplegable {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #b08d57;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    min-width: 180px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 0;
+}
+
+.menu-usuario-desplegable.mostrar {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 10px 0;
+}
+
+.menu-usuario-item {
+    padding: 12px 16px;
+    color: #b08d57;
+    text-decoration: none;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.menu-usuario-item i {
+    margin-right: 8px;
+    font-size: 1.4rem;
+}
+
+.menu-usuario-item:hover {
+    background-color: #f7f7f7;
+    color: #d4af37;
+}

@@ -1,0 +1,256 @@
+@use 'base/variables' as v;
+
+.modal-fondo-oscuro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    z-index: 20; /* Asegúrate de que esté sobre otros elementos */
+}
+
+/* Estilos generales para un scroll oscuro */
+#modal {
+   
+    background-color: v.$blanco; /* Fondo blanco */
+   
+}
+
+#modal-seleccionar-turno {
+    border-radius: 15px;
+}
+
+/* Estilo general del scrollbar */
+.modal::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+}
+
+.modal::-webkit-scrollbar-track {
+    background: #f2f2f2; /* Color de fondo del track */
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background-color: v.$dorado; /* Color del thumb (parte que se mueve) */
+    border-radius: 10px; /* Redondeado */
+    border: 2px solid v.$blanco; /* Bordes alrededor del thumb */
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background-color: lighten(v.$dorado, 10%); /* Color más claro al hacer hover */
+}
+
+.modal::-webkit-scrollbar-thumb:active {
+    background-color: darken(v.$dorado, 10%); /* Color más oscuro al hacer clic */
+}
+
+/* Estilos para el modal */
+.modal {
+    border: 5px double v.$dorado; /* Doble línea dorada para el borde */
+   
+    max-height: 90%;
+    display: none;
+    position: fixed;
+    z-index: 60;
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    background-color: v.$blanco; /* Fondo blanco */
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    animation: slideIn 0.5s forwards;
+    overflow-y: auto;
+
+    &.mostrar {
+        display: block; /* Asegúrate de que se muestre */
+        animation: slideIn 0.5s forwards; /* Animación de entrada */
+    }
+
+    @media (max-width: 768px) {
+        width: 100%; /* Ancho completo para pantallas móviles */
+        height: 100%; /* Alto completo para pantallas móviles */
+        
+        transform: none; /* Sin transformación */
+        border-radius: 0; /* Sin bordes redondeados */
+        max-height: 100%; /* Altura máxima completa */
+
+        &.mostrar {
+            animation: slideInMobile 0.5s forwards; /* Animación de entrada específica para móviles */
+        }
+        &::-webkit-scrollbar {
+            display: none; /* Oculta scrollbar en Chrome, Safari y Edge */
+        }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%); /* Para hacer la entrada más dinámica */
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideInMobile {
+    from {
+        opacity: 0;
+        transform: translateY(-20%); /* Para hacer la entrada más dinámica en móviles */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+/* Ajustes para el contenido del modal */
+.modal-contenido {
+    padding: 20px;
+    color: v.$dorado; /* Color del texto dorado */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra del modal */
+    border: 2px solid v.$dorado; /* Color y grosor del borde */
+
+    @media (max-width: 768px) {
+        padding: 10px; /* Menos padding en dispositivos móviles */
+    }
+}
+
+.cerrar {
+    color: v.$dorado;
+    font-size: 24px; /* Aumentar tamaño del icono */
+    position: absolute;
+    top: 30px; /* Ajusta según necesidad */
+    right: 30px; /* Posición a la derecha */
+    transition: color 0.3s, transform 0.3s; /* Transición de color y transformación */
+    cursor: pointer;
+    z-index: 1001;
+
+    @media (max-width: 768px) {
+        top: 10px; /* Ajustar en móviles */
+        right: 10px; /* Ajustar en móviles */
+    }
+}
+
+.cerrar:hover {
+    color: darken(v.$dorado, 10%); /* Cambia el color al pasar el mouse */
+    transform: scale(1.2); /* Escala del icono al pasar el mouse */
+}
+
+.filtro-categoria {
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif; /* Elegante y limpio */
+}
+
+/* Estilo del select para el filtro */
+.filtro-categoria select {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #f1c40f; /* Borde dorado sutil */
+    background-color: #fff; /* Fondo blanco */
+    color: #555; /* Color de texto gris suave */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+/* Cambio de estilo cuando el select está enfocado */
+.filtro-categoria select:focus {
+    outline: none;
+    border-color: #f39c12; /* Dorado más fuerte al hacer foco */
+    box-shadow: 0 0 8px rgba(243, 156, 18, 0.6); /* Brillo dorado suave */
+}
+
+
+/* Estilos del modal */
+.modal-informacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    
+}
+.modal-informacion.oculto {
+    display: none;
+}
+.modal-contenido-informacion {
+    background: #fff;
+    color: #333;
+    border: 3px solid #d4af37; /* Borde dorado */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+.modal-contenido-informacion p {
+
+    color: v.$negro;
+
+}
+.cerrar-modal-informacion {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #d4af37; /* Dorado */
+}
+.cerrar-modal-informacion i {
+    font-size: 24px; /* Tamaño del icono */
+}
+
+
+/* Estilos para el contenedor de la nota */
+.note-container {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaciado entre el ícono y el texto */
+    margin-top: 10px; /* Espacio entre el calendario y la nota */
+    font-size: 0.9em; /* Texto más pequeño */
+    color: #555; /* Color gris oscuro */
+    background-color: #f9f9f9; /* Fondo gris claro */
+    padding: 8px;
+    border-left: 4px solid #007BFF; /* Línea azul en el borde izquierdo */
+    border-radius: 4px;
+}
+
+/* Estilo para el ícono */
+.note-container i {
+    color: #007BFF; /* Color azul para el ícono */
+    font-size: 1.1em; /* Tamaño un poco más grande */
+}
+
+/* Estilo para centrar el contenedor de PayPal y agregar un marco */
+#paypal-container-F289S9SEB9MTU {
+    display: flex;           /* Usamos flexbox para alinear */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
+    margin-top: 90px;        /* Espacio superior, ajusta según sea necesario */
+    margin-bottom: 20px;     /* Espacio inferior, ajusta según sea necesario */
+    width: 100%;             /* Asegura que ocupe todo el ancho disponible */
+    height: 100px;           /* Ajusta la altura según sea necesario */
+    border: 2px solid #d4af37; /* Agrega un marco dorado */
+    border-radius: 10px;     /* Bordes redondeados */
+    background-color: #fff;  /* Fondo blanco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}

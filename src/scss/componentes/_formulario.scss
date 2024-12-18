@@ -1,0 +1,247 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.campo2 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
+    margin-top: 2rem;
+   
+    label {
+        
+        margin-bottom: 0.5rem;
+        font-weight: v.$regular;
+    }
+    input {
+        flex: 1;
+        border: 1px solid #ccc; /* Añade un borde predeterminado */
+        padding: calc(v.$separacion / 4);
+        border-radius: 1rem;
+
+    
+        &:disabled {
+            background-color: lighten(v.$negro, 30%);
+            color: v.$blanco;
+            cursor: not-allowed;
+        }
+        
+        &.error {
+            border: 3px solid rgba(255, 0, 0, 0.6) !important; /* Borde rojo sutil */
+        }
+    }
+}
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.campo label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.campo input {
+    flex: 1;
+    border: 1px solid #ccc; 
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-right: 2rem;
+}
+
+.campo input:disabled {
+    background-color: #e0e0e0;
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+.campo input.error {
+    border: 3px solid rgba(255, 0, 0, 0.6) !important; 
+}
+
+.campo .mensaje-error {
+    color: rgba(255, 0, 0, 0.8);
+    font-size: 1.3rem; 
+    margin-top: 0.3rem; 
+    margin-left: 1rem;
+    display: none; 
+}
+
+.campo .mensaje-error.mostrar-error {
+    display: block; 
+}
+
+
+/* Estilos para el spinner de carga */
+/* Estilos para el spinner de carga */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.loading-spinner.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.razor {
+    width: 100px;
+    height: 100px;
+    border: 10px solid transparent;
+    border-top: 10px solid #ffffff;
+    border-bottom: 10px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative;
+}
+
+.razor:before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    background-color: #ffffff;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 50%;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.formulario-login {
+    background-color: v.$blanco; /* Usa tu variable para el fondo */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    width: 100%; /* Ocupa el ancho completo disponible */
+    max-width: 600px; /* Limita el ancho máximo */
+    box-sizing: border-box; /* Asegura que padding y border no desborden */
+}
+
+/* Media Query para dispositivos más pequeños */
+@media (max-width: 768px) {
+    .formulario-login {
+        padding: 15px; /* Reduce el padding en pantallas pequeñas */
+        box-shadow: none; /* Opcional: elimina la sombra para simplicidad */
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-login {
+        padding: 10px; /* Reduce aún más el padding para pantallas muy pequeñas */
+    }
+}
+
+
+
+.centrar-login {
+    background-color: #fff;
+    border: 2px solid #d4af37;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 2rem;
+    text-align: center;
+}
+.nombre-pagina {
+    margin-bottom: 20px;
+    color: #d4af37;
+}
+.descripcion-pagina {
+    margin-bottom: 20px;
+    color: #000;
+}
+.campo {
+    margin-bottom: 20px;
+}
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+}
+.campo input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.boton {
+    background-color: #d4af37;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.boton:hover {
+    background-color: #c39728;
+}
+.acciones a {
+    display: block ;
+    margin-top: 10px ;
+    color: #d4af37;
+    text-decoration: none;
+}
+.acciones a:hover {
+    text-decoration: underline;
+}
+
+
+/* Contenedor para alinear la flecha */
+.contenedor-flecha {
+    display: flex;
+    justify-content: flex-start; /* Alinea hacia la izquierda */
+    padding-left: 10px; /* Ajusta este valor según la separación deseada */
+    margin-bottom: 20px; /* Espacio debajo de la flecha */
+}
+
+.flecha-retroceso {
+    display: flex;
+    align-items: center;
+    color: #d4af37;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.flecha-retroceso:hover {
+    transform: translateX(-5px);
+    color: darkgoldenrod;
+}
+
+.flecha-retroceso i {
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(10%);
+    }
+}

@@ -1,0 +1,31 @@
+@use 'base/variables' as v;
+
+.alerta {
+    padding: calc(v.$separacion / 4);
+    color: v.$blanco;
+    width: 80%; // Ancho para pantallas pequeñas
+    max-width: 600px; // Ancho máximo para pantallas grandes
+    display: block;
+    margin: 0 auto 2rem auto; // Centrar
+    text-align: center;
+    font-weight: v.$bold;
+    text-transform: uppercase;
+    word-wrap: break-word; // Ajustar el texto para que no se desborde
+    overflow: hidden; // Ocultar cualquier desbordamiento
+
+    &.error {
+        background-color: v.$dorado; // Color de fondo dorado
+    }
+    &.exito {
+        background-color: v.$dorado; // Color de fondo blanco
+        color: v.$blanco; // Texto dorado
+    }
+
+    @media(min-width: 768px) {
+        width: 60%; // Ancho para pantallas medianas
+    }
+
+    @media(min-width: 1024px) {
+        width: 50%; // Ancho para pantallas grandes
+    }
+}

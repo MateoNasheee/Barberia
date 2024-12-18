@@ -1,0 +1,85 @@
+
+/* Estilos de la sección Sobre Nosotros */
+.sobre-nosotros {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.sobre-nosotros .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre-nosotros .content {
+    max-width: 800px;
+}
+
+.sobre-nosotros h1 {
+    color: #bfa58a;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.sobre-nosotros p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.sobre-nosotros .images {
+    display: flex;
+    gap: 20px;
+}
+
+.sobre-nosotros .images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de la sección Visión y Misión */
+.vision-mision {
+    background-color: #000;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.vision-mision .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vision-mision .vision, .vision-mision .mision {
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+.vision-mision h2 {
+    color: #FFD700; /* Color dorado */
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.vision-mision p {
+    font-size: 18px;
+    color: #ccc;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .sobre-nosotros .images {
+        flex-direction: column;
+    }
+
+    .vision-mision .vision, .vision-mision .mision {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
